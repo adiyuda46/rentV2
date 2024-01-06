@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Firebase Auth Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -70,16 +71,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthWrapper extends StatelessWidget {
-  const AuthWrapper({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
-
-    if (firebaseUser != null) {
-      return const HomeScreen();
-    }
-    return const LoginScreen();
-  }
-}
