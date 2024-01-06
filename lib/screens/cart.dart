@@ -1,3 +1,4 @@
+import 'package:firebase_auth_demo/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
@@ -106,10 +107,11 @@ class Cart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-            child: Text(
-          "My Cart",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        )),
+          child: Text(
+            "My Cart",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
       ),
       body: ListView(
         children: [
@@ -118,6 +120,31 @@ class Cart extends StatelessWidget {
           CardItem(brand: "nama product", itemName: "nama item", price: "9000"),
           CardItem(brand: "nama product", itemName: "nama item", price: "9000"),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(20),
+        child: ElevatedButton(
+          onPressed: () {
+            // Fungsi untuk checkout
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Checkout",style: TextStyle(color: Colors.white),),
+              Text(
+                "Total: Rp36,000",
+                style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+              ),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+  fixedSize: Size(316, 56),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10),
+  ),
+  primary: PrimerBlackColor, // Ubah warna menjadi biru
+),
+        ),
       ),
     );
   }

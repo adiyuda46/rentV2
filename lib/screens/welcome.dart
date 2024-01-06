@@ -49,8 +49,8 @@ class _WelcomeState extends State<Welcome> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Navigator.pushReplacementNamed(context, '/login-email-password');
-                        Navigator.pushNamed(context, '/login-email-password');
+                         Navigator.pushReplacementNamed(context, '/login-email-password');
+                        //Navigator.pushNamed(context, '/login-email-password');
                       },
                       child: Text(
                         "LOGIN",

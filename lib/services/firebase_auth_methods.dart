@@ -1,3 +1,4 @@
+import 'package:firebase_auth_demo/screens/buttomNavBar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -51,24 +52,31 @@ class FirebaseAuthMethods {
 
   // EMAIL LOGIN
   Future<void> loginWithEmail({
-    required String email,
-    required String password,
-    required BuildContext context,
-  }) async {
-    try {
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+  required String email,
+  required String password,
+  required BuildContext context,
+}) async {
+  try {
+    await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    if (!user.emailVerified) {
+      await sendEmailVerification(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyBottomNavigationBar()),
       );
-      if (!user.emailVerified) {
-        await sendEmailVerification(context);
-        // restrict access to certain things using provider
-        // transition to another page instead of home screen
-      }
-    } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message!); // Displaying the error message
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyBottomNavigationBar()),
+      );
     }
+  } on FirebaseAuthException catch (e) {
+    showSnackBar(context, e.message!); // Menampilkan pesan kesalahan
   }
+}
 
   // EMAIL VERIFICATION
   Future<void> sendEmailVerification(BuildContext context) async {

@@ -1,12 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/firebase_options.dart';
+import 'package:firebase_auth_demo/screens/detailItem.dart';
 import 'package:firebase_auth_demo/screens/home_screen.dart';
+import 'package:firebase_auth_demo/screens/listItem.dart';
 import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
 import 'package:firebase_auth_demo/screens/phone_screen.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/splash.dart';
 import 'package:firebase_auth_demo/screens/welcome.dart';
+import 'package:firebase_auth_demo/screens/buttomNavBar.dart';
 import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,11 +47,15 @@ class MyApp extends StatelessWidget {
         home: SplashPage(),
         routes: {
           SplashPage.routeName:(context) => SplashPage(),
-          Welcome.routeName:(context) => Welcome(),
+          Welcome.routeName:(context) => const Welcome(),
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),
           EmailPasswordLogin.routeName: (context) => const EmailPasswordLogin(),
           PhoneScreen.routeName: (context) => const PhoneScreen(),
+          MyBottomNavigationBar.routeName:(context) => MyBottomNavigationBar(),
+          '/ListItem': (context) => ListItem(),
+          '/DetailItem':(context) => DetailItem(),
+          '/MyBottomNavigationBar' :(context) => MyBottomNavigationBar(),
         },
       ),
     );
