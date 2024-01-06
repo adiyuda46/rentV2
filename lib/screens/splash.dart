@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth_demo/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     //TODO: implement initState
     Timer(Duration(seconds: 3), (){ 
-      Navigator.pushReplacementNamed(context, '/signup-email-password');
+      Navigator.pushReplacementNamed(context, '/welcome');
     });
     super.initState();
   }
@@ -24,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: PrimerBlackColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
