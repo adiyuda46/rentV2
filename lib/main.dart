@@ -5,6 +5,7 @@ import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
 import 'package:firebase_auth_demo/screens/phone_screen.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
+import 'package:firebase_auth_demo/screens/splash.dart';
 import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const AuthWrapper(),
+        home: SplashPage(),
         routes: {
+          //SplashPage.routeName:(context) => SplashPage(),
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),
           EmailPasswordLogin.routeName: (context) => const EmailPasswordLogin(),
