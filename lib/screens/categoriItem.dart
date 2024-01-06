@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class categoryItem extends StatelessWidget {
+class categoryItem extends StatefulWidget {
+  static String routeName = '/CategoryItem';
   final String id;
   final String title;
   final String images;
@@ -9,17 +10,22 @@ class categoryItem extends StatelessWidget {
       {super.key, required this.id, required this.title, required this.images});
 
   @override
+  State<categoryItem> createState() => _categoryItemState();
+}
+
+class _categoryItemState extends State<categoryItem> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/ListItem',
-            arguments: {"id": id, "title": title});
+            arguments: {"id": widget.id, "title": widget.title});
       },
       child: Container(
         decoration: BoxDecoration(
             color: Colors.red,
             image:
-                DecorationImage(image: NetworkImage(images), fit: BoxFit.cover),
+                DecorationImage(image: NetworkImage(widget.images), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
@@ -30,7 +36,7 @@ class categoryItem extends StatelessWidget {
             ]),
         child: Container(
           child: Text(
-            title,
+            widget.title,
             style: TextStyle(
               color: Colors.white,
             ),
