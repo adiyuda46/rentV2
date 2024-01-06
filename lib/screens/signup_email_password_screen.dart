@@ -1,7 +1,6 @@
 import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
 import 'package:firebase_auth_demo/shared/theme.dart';
 import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
-import 'package:firebase_auth_demo/widgets/inputText.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +15,9 @@ class EmailPasswordSignup extends StatefulWidget {
 class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController phoneNumber = TextEditingController();
+  final TextEditingController confirmPassword = TextEditingController();
 
   void signUpUser() async {
     context.read<FirebaseAuthMethods>().signUpWithEmail(
@@ -27,69 +29,84 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
 
   @override
   Widget build(BuildContext context) {
-    final double tinggi = MediaQuery.of(context).size.height;
-    final double lebar = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(22, 70, 22, 22),
-        child: Container(
-          height: tinggi,
-          width: lebar,
-          child: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
-            child: Column(
-              children: [
-                Text(
-                  "Hello! Register to get started",
-                  style: TextStyle(fontSize: 33),
+        child: SingleChildScrollView(
+         // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Hello! Register to get started",
+                style: TextStyle(fontSize: 33,fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomTextField(
+                  controller: userName,
+                  hintText: 'Username',
                 ),
-                SizedBox(
-                  height: 50,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomTextField(
+                  controller: emailController,
+                  hintText: 'Email',
                 ),
-                InputText(hintText: "Username"),
-                SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomTextField(
+                  controller: phoneNumber,
+                  hintText: 'Phone Number',
                 ),
-                InputText(hintText: "Email"),
-                SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomTextField(
+                  controller: passwordController,
+                  hintText: 'Password',
                 ),
-                InputText(hintText: "Phone Number"),
-                SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomTextField(
+                  controller: confirmPassword,
+                  hintText: 'Confirm Password',
                 ),
-                InputText(hintText: "Password"),
-                SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () {
+                  //Navigator.pushReplacementNamed(context, '/LoginPage');
+                  signUpUser();
+                },
+                child: Text(
+                  "Register",
+                  style: TextStyle(color: Colors.white),
                 ),
-                InputText(hintText: "Confirm password"),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/LoginPage');
-                  },
-                  child: Text(
-                    "Register",
-                    style: TextStyle(color: Colors.white),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: PrimerBlackColor,
+                  fixedSize: Size(316, 56),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: PrimerBlackColor,
-                    fixedSize: Size(316, 56),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
                 ),
-                SizedBox(height: 25),
-                Row(
+              ),
+               const SizedBox(height: 70),
+              Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Alredy have an account? "),
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/LoginPage');
+                        Navigator.pushReplacementNamed(context, '/login-email-password');
                       },
                       child: Text(
                         "Login Now!",
@@ -98,8 +115,7 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                     ),
                   ],
                 ),
-              ],
-            ),
+            ],
           ),
         ),
       ),
