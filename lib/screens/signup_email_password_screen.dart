@@ -1,5 +1,7 @@
 import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/shared/theme.dart';
 import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
+import 'package:firebase_auth_demo/widgets/inputText.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,48 +27,81 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
 
   @override
   Widget build(BuildContext context) {
+    final double tinggi = MediaQuery.of(context).size.height;
+    final double lebar = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Sign Up",
-            style: TextStyle(fontSize: 30),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomTextField(
-              controller: emailController,
-              hintText: 'Enter your email',
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(22, 70, 22, 22),
+        child: Container(
+          height: tinggi,
+          width: lebar,
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+            child: Column(
+              children: [
+                Text(
+                  "Hello! Register to get started",
+                  style: TextStyle(fontSize: 33),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                InputText(hintText: "Username"),
+                SizedBox(
+                  height: 20,
+                ),
+                InputText(hintText: "Email"),
+                SizedBox(
+                  height: 20,
+                ),
+                InputText(hintText: "Phone Number"),
+                SizedBox(
+                  height: 20,
+                ),
+                InputText(hintText: "Password"),
+                SizedBox(
+                  height: 20,
+                ),
+                InputText(hintText: "Confirm password"),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/LoginPage');
+                  },
+                  child: Text(
+                    "Register",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: PrimerBlackColor,
+                    fixedSize: Size(316, 56),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Alredy have an account? "),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, '/LoginPage');
+                      },
+                      child: Text(
+                        "Login Now!",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomTextField(
-              controller: passwordController,
-              hintText: 'Enter your password',
-            ),
-          ),
-          const SizedBox(height: 40),
-          ElevatedButton(
-            onPressed: signUpUser,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              textStyle: MaterialStateProperty.all(
-                const TextStyle(color: Colors.white),
-              ),
-              minimumSize: MaterialStateProperty.all(
-                Size(MediaQuery.of(context).size.width / 2.5, 50),
-              ),
-            ),
-            child: const Text(
-              "Sign Up",
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
