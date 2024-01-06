@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/firebase_options.dart';
+import 'package:firebase_auth_demo/screens/ForgetPassword.dart';
+import 'package:firebase_auth_demo/screens/createNewPass.dart';
 import 'package:firebase_auth_demo/screens/detailItem.dart';
+import 'package:firebase_auth_demo/screens/home.dart';
 import 'package:firebase_auth_demo/screens/home_screen.dart';
 import 'package:firebase_auth_demo/screens/listItem.dart';
 import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
+import 'package:firebase_auth_demo/screens/passwordChange.dart';
 import 'package:firebase_auth_demo/screens/phone_screen.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/splash.dart';
@@ -56,6 +60,10 @@ class MyApp extends StatelessWidget {
           '/ListItem': (context) => ListItem(),
           '/DetailItem':(context) => DetailItem(),
           '/MyBottomNavigationBar' :(context) => MyBottomNavigationBar(),
+          '/ForgetPass' :(context) => ForgetPass(),
+          '/CreateNewPass':(context) => CreateNewPass(),
+          '/PasswordChange':(context) => PasswordChange(),
+          '/homePage' :(context) => Welcome()
         },
       ),
     );

@@ -60,7 +60,7 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/ForgetPass');
                     },
-                    child: Text("Forget Password?"),
+                    child: Text("Forget Password?",style: TextStyle(color: Colors.black),),
                   ),
                 ),
               const SizedBox(height: 20),
