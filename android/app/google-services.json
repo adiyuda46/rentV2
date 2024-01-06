@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088002538066",
+    "project_id": "rent-1bf13",
+    "storage_bucket": "rent-1bf13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088002538066:android:424ca7f6bad23caf47fd8b",
+        "android_client_info": {
+          "package_name": "com.example.rent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCilzNy-9DnzTvAG7oXJMUK1Zx7VDptvLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
